@@ -31,7 +31,6 @@ class main extends Component {
         return (
             
             <Fragment>
-                {/* <span>{!isLoaded ? "Loading..." : null}</span> */}
                 <div className="results-title">
 					<strong>Top Movies</strong>
 				</div>

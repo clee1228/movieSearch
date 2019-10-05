@@ -44,6 +44,11 @@ class MovieModal extends Component {
         const duration = this.msToTime(movie.trackTimeMillis)
         const rating = movie.contentAdvisoryRating
         const genre = movie.primaryGenreName
+        const price = movie.trackRentalPrice ? (
+          '$' + movie.trackRentalPrice
+      ) : ( 
+          'No Rental Option'
+      )
 
         return (
             <Modal
@@ -56,7 +61,7 @@ class MovieModal extends Component {
                 url={movie.previewUrl}
               />
               <Modal.Description>
-                <Image src={artwork}/>
+                <Image className="modal-pic" src={artwork}/>
 
                 <p>
                 <strong>Description</strong><br/>
@@ -66,12 +71,12 @@ class MovieModal extends Component {
                
                 <strong>Genre: </strong> {genre} <br/>
                 <strong>Run Time: </strong> {duration} <br/>
-                <strong>Rental: </strong> ${movie.trackRentalPrice} 
+                <strong>Rental: </strong> {price} 
                 </p>
 
                 <p>
                 { rating === 'PG-13' ? (
-                   <Image className="rate-icon" src={ratedPg13}/>
+                   <Image className="longer-icon" src={ratedPg13}/>
 
                 ): rating === 'PG' ?(
                   <Image className="rate-icon" src={ratedPg}/>
@@ -82,7 +87,7 @@ class MovieModal extends Component {
                 ): rating === 'R' ? (
                   <Image className="rate-icon" src={ratedR}/>
                 ): rating === 'NR' ?(
-                  <Image className="not-rated" src={notRated}/>
+                  <Image className="longer-icon" src={notRated}/>
                 ): (
                   null
                 )}
@@ -90,10 +95,10 @@ class MovieModal extends Component {
                 
               </Modal.Description>
             </Modal.Content>
-            <Modal.Actions>
+            {/* <Modal.Actions>
             <Button primary>
               iTunes Store </Button>
-            </Modal.Actions>
+            </Modal.Actions> */}
             
           </Modal>
           

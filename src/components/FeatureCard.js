@@ -22,16 +22,16 @@ class FeatureCard extends Component {
 
         return (
             <Card 
-                href="/"
+                // href="/"
                 raised>
             <Image src={artwork}/>
             <Card.Content>
                 <Card.Header> {movie.title.label} </Card.Header>
                 <Card.Meta> {genre}   </Card.Meta>
                 <Card.Meta> {price}   </Card.Meta>
-                {/* <Card.Description>
+                <Card.Description>
                     {description}
-                </Card.Description> */}
+                </Card.Description>
             </Card.Content>
             </Card>
         )

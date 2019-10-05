@@ -1,3 +1,8 @@
+## iTunes Movie Search
+A web application where you can search, get information, and watch previews for movies via iTunes Search API.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

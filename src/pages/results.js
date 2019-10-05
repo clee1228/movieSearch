@@ -8,6 +8,7 @@ class results extends Component {
         error: '',
         isLoaded: false,
         apiResults: [],
+        resultCount: 0,
         query: ''
     }
 
@@ -26,7 +27,11 @@ class results extends Component {
         axios.get(`https://itunes.apple.com/search?term=${query.split(' ').join('+')}&entity=movie`)
         .then((response) => {
             // console.log('resultCount = ', response.data.resultCount)
-            this.setState({ apiResults: response.data.results, query: query, isLoaded: true})
+            this.setState({ 
+                    apiResults: response.data.results, 
+                    resultCount: response.data.resultCount, 
+                    query: query, 
+                    isLoaded: true})
         })
     };
 
@@ -36,7 +41,7 @@ class results extends Component {
     }
     
     render() {
-        const { isLoaded, query, items, apiResults } = this.state;
+        const { isLoaded, query, items, apiResults, resultCount } = this.state;
         var movies = [];
         if(this.state.isLoaded){
             movies = apiResults.length > 0 ? this.mapItems(apiResults) : 'No Results Found'
@@ -46,10 +51,12 @@ class results extends Component {
             <Fragment>
                 <span>{!isLoaded ? "Loading..." : null}</span>
                 <div className="results-title">
-					Results for <strong>{query}</strong>
+					<strong>{resultCount}</strong> Results for <strong>{query}</strong>
 				</div>
 
-                 <Card.Group itemsPerRow={5}>
+                 <Card.Group 
+                    // stackable -- for mobile view
+                    itemsPerRow={5}>
                  {movies}
                 </Card.Group>
             </Fragment>

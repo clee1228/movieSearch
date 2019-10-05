@@ -5,7 +5,7 @@ import './App.css';
 
 
 // Components
-import NavBar from './layout/NavBar.js';
+import NavBar from './layout/NavBar';
 
 // Pages
 import main from './pages/main.js'
@@ -28,11 +28,6 @@ class App extends Component {
           <div className="App-container">
               <Route exact path="/" component={main}/>
               <Route path="/:query" component={results}/>
-
-
-            
-              
-        
           </div>
 
           </Router>
